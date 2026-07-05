@@ -19,8 +19,8 @@ function App() {
         const data = await fetchMetadata();
         setMetadata(data);
       } catch (err) {
-        console.error("Failed to load metadata", err);
-        setError("Failed to connect to the prediction backend.");
+        console.error("Failed to load metadata, please refresh", err);
+        setError("Please refresh the page to try again. Apologies for the inconvenience.");
       }
     };
     loadMetadata();
@@ -34,10 +34,10 @@ function App() {
 
       <main>
         {!result && !loading && (
-          <PredictionForm 
-            setResult={setResult} 
-            setLoading={setLoading} 
-            metadata={metadata} 
+          <PredictionForm
+            setResult={setResult}
+            setLoading={setLoading}
+            metadata={metadata}
           />
         )}
 
@@ -45,7 +45,7 @@ function App() {
 
         {result && !loading && (
           <>
-             <ResultDashboard result={result} onReset={() => setResult(null)} />
+            <ResultDashboard result={result} onReset={() => setResult(null)} />
           </>
         )}
       </main>
